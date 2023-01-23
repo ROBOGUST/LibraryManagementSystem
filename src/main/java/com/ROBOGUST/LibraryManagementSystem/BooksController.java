@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 public class BooksController {
-    private BooksServiceImpl booksServiceImpl;
+    private final BooksServiceImpl booksServiceImpl;
 
     public BooksController(BooksServiceImpl booksServiceImpl) {
         this.booksServiceImpl = booksServiceImpl;
