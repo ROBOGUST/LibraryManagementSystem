@@ -26,12 +26,15 @@ public class Books {
     @Column(name = "genre")
     private String genre;
     @Column(name = "ISBN")
-    private long ISBN;
+    private Long ISBN;
+    @Column(name = "heart")
+    private Boolean heart;
 
-    public Books(String author, String title, String genre, long ISBN){
+    public Books(String author, String title, String genre, Long ISBN, Boolean heart){
         this.author = author;
         this.title = title;
         this.genre = genre;
         this.ISBN = ISBN;
+        this.heart = heart;
     }
 }
