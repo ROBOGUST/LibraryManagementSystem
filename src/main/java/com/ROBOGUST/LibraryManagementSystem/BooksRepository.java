@@ -8,8 +8,8 @@ import java.util.List;
 
 @Repository
 public interface BooksRepository extends JpaRepository <Books, Long>{
-    @Query("SELECT * FROM Books")
-    List<Books>getAllBooks();
+   // @Query("SELECT * FROM Books")
+    //List<Books>getAllBooks();
 
 
 
