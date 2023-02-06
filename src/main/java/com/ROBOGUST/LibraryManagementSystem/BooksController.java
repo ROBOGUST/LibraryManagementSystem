@@ -1,5 +1,6 @@
 package com.ROBOGUST.LibraryManagementSystem;
 
+import com.ROBOGUST.LibraryManagementSystem.users.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -40,5 +41,9 @@ public class BooksController {
         return "logout";
     }
 
+    @GetMapping("/register")
+    public String register(User user) {
+        return "register";
+    }
 
 }
