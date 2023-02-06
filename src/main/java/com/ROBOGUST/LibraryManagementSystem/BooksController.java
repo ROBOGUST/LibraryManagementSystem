@@ -21,9 +21,8 @@ public class BooksController {
     }
 
     @GetMapping("/hello")
-    public String Hello(){
-
-        return "Hello";
+    public ResponseEntity<Books> getSelectedBooks(){
+        return booksService.getSelectedBooks();
     }
 
     @GetMapping("/books")
@@ -33,7 +32,7 @@ public class BooksController {
     }
     @GetMapping("/home")
     public String home() {
-        return "home";
+        return "home.html";
     }
 
     @GetMapping("/logout")
