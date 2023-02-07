@@ -3,6 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Hero Library</title>
+    <style>
+        h1 {
+        font-family: Impact, sans-serif;
+        color: #CE5937;
+        }
+    </style>
 </head>
 <body>
 <h1>Welcome to Hero Library!</h1>
@@ -13,5 +19,29 @@
 <a th:href="@{/logout}">
     <button type="button"> logout </button>
 </a>
+
+<input id="input" type="text">
+<button onclick="getBooks()">Get Books</button>
+<br>
+<div id="output"></div>
+
+<script>
+function getBooks(){
+    document.getElementById('output').innerHTML="";
+    fetch("http://openlibrary.org/search.json?q="
+    +document.getElementById("input").value)
+    .then(a => a.json())
+    .then(response =>{
+        for(var i = 0 ; i < response.docs.length ; i++){
+            document.getElementById("output").innerHTML+="<h2>"
+            +response.docs[i].title+"</h2>"
+            +response.docs[i].author_name[0]
+            +"<br><img src='http://covers.openlibrary.org/b/isbn/"
+            +response.docs[i].isbn[0]
+            +"-M.jpg'><br>";
+        }
+    });
+}
+</script>
 </body>
 </html>
