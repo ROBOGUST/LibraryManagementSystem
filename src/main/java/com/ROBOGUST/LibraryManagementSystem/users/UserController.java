@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("api/v1/users")
 public class UserController {
 
     private final UserService userService;
@@ -21,7 +22,7 @@ public class UserController {
     }
 
     @PutMapping("/update_user/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") int id, @RequestBody User user) {
+    private ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody User user) {
         return userService.update(user.getUsername(), user.getRole(), id);
     }
 }

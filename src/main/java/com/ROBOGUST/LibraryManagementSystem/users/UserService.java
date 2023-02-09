@@ -1,5 +1,6 @@
 package com.ROBOGUST.LibraryManagementSystem.users;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +24,15 @@ public class UserService {
         return null;
     }
 
-    public ResponseEntity<User> update(String username, Role role, int id) {
-        return null;
+    public ResponseEntity<User> update(String username, Role role, long id) {
+        try {
+            User user = userRepository.findById(id).get();
+            user.setUsername(username);
+            user.setRole(role);
+            return new ResponseEntity<User>(userRepository.save(user), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.I_AM_A_TEAPOT);
+        }
+
     }
 }

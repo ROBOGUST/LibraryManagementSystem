@@ -30,12 +30,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .requestMatchers("/api/v1/auth/**" , "/login", "/home")
                 .permitAll()
+                .requestMatchers("/api/v1/users/**").hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
-                //.and()
-                //.sessionManagement()
-                //.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                /*.and()
                 .formLogin()
                 .loginPage("/login")
                 .defaultSuccessUrl("/home")
@@ -44,7 +45,7 @@ public class SecurityConfig {
                 .logoutUrl("/logout")
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
-                .logoutSuccessUrl("/login")
+                .logoutSuccessUrl("/login")*/
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
@@ -53,6 +54,8 @@ public class SecurityConfig {
             CorsConfiguration corsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
             corsConfiguration.addAllowedMethod("POST");
             corsConfiguration.addAllowedMethod("GET");
+            corsConfiguration.addAllowedMethod("PUT");
+            corsConfiguration.addAllowedMethod("DELETE");
             return corsConfiguration;
         });
 
