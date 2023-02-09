@@ -30,7 +30,7 @@ public class BooksController {
 
         return booksService.getAllBooks();
     }
-    @GetMapping("/home")
+    /*@GetMapping("/home")
     public String home() {
         return "home.html";
     }
@@ -44,5 +44,5 @@ public class BooksController {
     public String register(User user) {
         return "register";
     }
-
+*/
 }
